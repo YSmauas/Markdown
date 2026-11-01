@@ -92,11 +92,57 @@ body.focus-mode header,body.focus-mode .pane:not(.editor-pane){display:none}body
 @media print{:root{--bg:#f6f8fa;--panel:#fff;--fg:#1f2328;--muted:#59636e;--border:#d1d9e0;--code:#818b981f;--hc:#59636e;--hs:#0a3069;--hn:#0550ae;--hk:#cf222e;--ht:#116329;--hf:#8250df}
  body{display:block;height:auto;overflow:visible}header,.mobile-tabs,.editor-pane,.status,.pane-title,.toc,.code-toolbar{display:none!important}.layout{display:block;height:auto;margin:0;padding:0;max-width:none}.pane{border:0}#preview{overflow:visible;padding:0;min-height:0;font-size:12pt}#preview pre{white-space:pre-wrap}}
 
+/* ===== Skin switch + Mitmachim Top (NodeBB) skin ===== */
+.skin-switch{display:inline-flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}.skin-switch button{border:0;border-radius:0;background:var(--panel);padding:5px 12px}.skin-switch button[aria-pressed=true]{background:var(--accent);color:#fff}
+.mm-only{display:none!important}html[data-skin=mm] .mm-only{display:flex!important}.mm-color{display:inline-flex;align-items:center;gap:4px;font-size:13px}.mm-color input{width:28px;height:24px;padding:0;border:0;background:none}
+#mmBar{flex-wrap:wrap;gap:4px}#mmBar button,#mmBar select{font-size:13px;padding:3px 8px}
+html[data-skin=mm]{--bg:#f8f9fa;--panel:#fff;--fg:#212529;--muted:#6c757d;--border:#dee2e6;--accent:#0d6efd;--code:#f1f3f5;--green:#0d6efd;--green-h:#0b5ed7;--quote:#dee2e6}
+@media(prefers-color-scheme:dark){html[data-skin=mm]{--bg:#2b3035;--panel:#212529;--fg:#dee2e6;--muted:#adb5bd;--border:#495057;--accent:#6ea8fe;--code:#2b3035;--quote:#495057}}
+@media print{html[data-skin=mm]{--bg:#f8f9fa;--panel:#fff;--fg:#212529;--muted:#6c757d;--border:#dee2e6;--code:#f1f3f5}}
+html[data-skin=mm] body{font-family:"Segoe UI",system-ui,-apple-system,"Noto Sans Hebrew",Arial,sans-serif}
+html[data-skin=mm] header{background:var(--panel);border-bottom:1px solid var(--border)}
+html[data-skin=mm] button,html[data-skin=mm] .file-label,html[data-skin=mm] select{background:var(--panel);border-radius:.375rem}
+html[data-skin=mm] button.primary{background:var(--green);color:#fff}
+html[data-skin=mm] .pane{border-radius:.5rem}html[data-skin=mm] #preview{padding:18px 22px;line-height:1.6}
+html[data-skin=mm] #preview :is(h1,h2,h3,h4,h5,h6){border:0;padding:0;margin:20px 0 12px}
+html[data-skin=mm] #preview h2{background:#212529;color:#fff;padding:.4rem .9rem;border-radius:.375rem;font-size:1.35em}
+html[data-skin=mm] #preview h6{font-size:.85em;color:var(--muted);margin:8px 0}
+html[data-skin=mm] #preview blockquote{background:var(--bg);border:0;border-inline-start:4px solid var(--border);padding:.5rem 1rem;font-size:.92em;border-radius:.25rem}
+html[data-skin=mm] #preview pre{background:var(--bg);border:1px solid var(--border)}
+html[data-skin=mm] #preview tr:nth-child(2n){background:transparent}html[data-skin=mm] #preview th{background:var(--bg)}
+html[data-skin=mm] #preview a{color:var(--accent);text-decoration:none}
+.mm-alert{--c:13,202,240;padding:.75rem 1rem;margin:0 0 16px;border:1px solid rgba(var(--c),.5);background:rgba(var(--c),.13);border-radius:.375rem}.mm-alert strong{display:block;margin-bottom:2px}.mm-alert>div>:last-child{margin-bottom:0}
+.mm-important{--c:255,193,7}.mm-warning,.mm-danger{--c:220,53,69}.mm-success{--c:25,135,84}
+.mm-spoiler{border:1px solid var(--border);border-radius:.375rem;margin:0 0 16px}.mm-spoiler>summary{padding:.4rem .8rem;cursor:pointer;font-weight:600;background:var(--bg)}.mm-spoiler>:not(summary){margin-inline:1rem}.mm-spoiler>summary+*{margin-top:12px}
+.guest-hide{background:rgba(255,193,7,.25);outline:1px dashed #d4a017;border-radius:4px;padding:0 .25em}.mm-tip{color:var(--accent);cursor:help;font-weight:700;padding:0 .2em}.mention{color:var(--accent);font-weight:500}
+
+/* ===== GitHub file bar + outline + heading anchors ===== */
+.gh-filebar{display:flex;align-items:center;gap:2px;position:relative;padding:0 8px;border-bottom:1px solid var(--border);background:var(--panel)}
+html[data-skin=mm] .gh-filebar{display:none}
+.gh-tab{padding:10px 8px 8px;font-weight:600;font-size:14px;border-bottom:2px solid #fd8c73;margin-bottom:-1px}.gh-spacer{flex:1}
+.gh-ib{border:0;background:transparent;color:var(--muted);padding:6px 8px;border-radius:6px}.gh-ib:hover{background:var(--bg);color:var(--fg)}.gh-ib[hidden]{display:none}
+.gh-pop{position:absolute;inset-inline-end:8px;top:calc(100% + 4px);z-index:20;width:min(340px,92%);max-height:60vh;overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 24px #1f232826;padding:8px}
+.gh-pop-title{font-weight:600;font-size:13px;color:var(--muted);padding:4px 8px 6px}#tocList{margin:0;max-height:none}#tocList a{padding:6px 8px;border-radius:6px;color:var(--fg)}#tocList a:hover{background:var(--bg)}
+#preview :is(h1,h2,h3,h4,h5,h6){position:relative}
+#preview .anchor{position:absolute;left:-26px;top:50%;transform:translateY(-50%);padding:2px 4px;color:var(--muted);opacity:0;text-decoration:none;line-height:0}
+#preview :is(h1,h2,h3,h4,h5,h6):hover .anchor,#preview .anchor:focus-visible{opacity:1}@media(hover:none){#preview .anchor{opacity:1}}
+html:not([data-skin=mm]) #preview{padding-left:32px}html[data-skin=mm] #preview .anchor{display:none}
+/* ===== Mitmachim: forum nav + post card ===== */
+.mm-nav{align-items:center;gap:18px;padding:8px 16px;background:var(--panel);border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap;font-size:14px}.mm-nav a{color:var(--fg);text-decoration:none}.mm-nav a:hover{color:var(--accent)}.mm-nav .mm-logo{font-weight:700;color:var(--accent);font-size:16px}
+.mm-post-head{align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--panel)}.mm-avatar{width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:600}
+.mm-time{font-size:12px;color:var(--muted)}.mm-num{margin-inline-start:auto;font-size:12px;color:var(--muted)}
+.mm-post-foot{gap:18px;padding:8px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:13px;background:var(--panel)}.mm-votes{margin-inline-start:auto}
+html[data-skin=mm] #preview blockquote{font-size:.875em}html[data-skin=mm] #preview img{max-width:100%;border-radius:.25rem}
+html[data-skin=mm] #preview :is(h1,h2,h3,h4,h5){font-weight:600}html[data-skin=mm] #preview h1{font-size:2rem}
+html[data-skin=mm] .pane-title{background:var(--panel)}html[data-skin=mm] body{background:var(--bg)}
+@media print{html[data-skin] .mm-only,html[data-skin] .gh-filebar{display:none!important}#preview .anchor{display:none}html:not([data-skin=mm]) #preview{padding-left:0}}
+
 </style>
 </head>
 <body>
+<nav class="mm-nav mm-only" aria-label="תפריט הפורום"><a class="mm-logo" href="https://mitmachim.top/" target="_blank" rel="noopener">מתמחים טופ</a><a href="https://mitmachim.top/" target="_blank" rel="noopener">דף הבית</a><a href="https://mitmachim.top/topic/5489" target="_blank" rel="noopener">חוקי הפורום</a><a href="https://mitmachim.top/recent" target="_blank" rel="noopener">פוסטים אחרונים</a><a href="https://mitmachim.top/popular" target="_blank" rel="noopener">פופולרי</a><a href="https://mitmachim.top/unsolved" target="_blank" rel="noopener">לא נפתר</a><a href="https://mitmachim.top/users" target="_blank" rel="noopener">משתמשים</a></nav>
 <header><div class="top">
-  <div class="header-row"><div class="brand"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21z"/><path d="M4 5.5v15M8 7h8M8 11h8"/></svg> קורא Markdown מקומי</div><button id="collapseControls" class="collapse-toggle" type="button" aria-expanded="true" title="קיפול או פתיחת האפשרויות"><svg class="icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg><span>קיפול אפשרויות</span></button></div>
+  <div class="header-row"><div class="brand"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21z"/><path d="M4 5.5v15M8 7h8M8 11h8"/></svg> קורא Markdown מקומי</div><div class="skin-switch" role="group" aria-label="סגנון עיצוב"><button type="button" data-skin="gh" aria-pressed="true">GitHub</button><button type="button" data-skin="mm" aria-pressed="false">מתמחים טופ</button></div><button id="collapseControls" class="collapse-toggle" type="button" aria-expanded="true" title="קיפול או פתיחת האפשרויות"><svg class="icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg><span>קיפול אפשרויות</span></button></div>
   <div class="actions">
     <label class="file-label" for="file">פתיחת קובץ ‎.md</label><input id="file" type="file" accept=".md,.markdown,.txt,text/markdown,text/plain">
     <button id="save" class="primary" title="Ctrl+S">שמירה</button><button id="saveAs" title="Ctrl+Shift+S">שמירה בשם</button><label class="auto-label"><input type="checkbox" id="autoSave" checked> שמירה אוטומטית</label>
@@ -123,8 +169,8 @@ body.focus-mode header,body.focus-mode .pane:not(.editor-pane){display:none}body
 <button type="button" data-prefix="- " title="רשימת תבליטים" aria-label="רשימת תבליטים"><svg class="icon" viewBox="0 0 24 24"><circle cx="5" cy="6" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="5" cy="18" r="1"/><path d="M10 6h10M10 12h10M10 18h10"/></svg></button>
 <button type="button" id="insertTable" title="הוספת טבלה" aria-label="הוספת טבלה"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18M9 4v16M15 4v16"/></svg></button>
 <span class="tool-sep"></span><button type="button" id="toolFind" title="חיפוש והחלפה (Ctrl+F)" aria-label="חיפוש והחלפה"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button><button type="button" id="toolFocus" title="מצב מיקוד / מסך מלא" aria-label="מצב מיקוד"><svg class="icon" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
-</div><div id="findBar" hidden><input id="fq" placeholder="חיפוש" aria-label="חיפוש"><input id="fr" placeholder="החלפה" aria-label="החלפה"><button id="fprev" type="button">הקודם</button><button id="fnext" type="button">הבא</button><button id="frep" type="button">החלף</button><button id="frepAll" type="button">החלף הכול</button><span id="fcount"></span><button id="fclose" type="button" aria-label="סגירה">✕</button></div><textarea id="source" spellcheck="false" aria-label="תוכן Markdown" placeholder="# הכותרת שלך&#10;&#10;כתוב כאן..."></textarea><div class="status" id="editStatus">הטקסט נשמר בזיכרון הדף בלבד.</div></section>
-<section class="pane"><div class="pane-title"><span>תצוגה מעוצבת</span><span style="display:flex;align-items:center;gap:10px"><span id="wordCount">0 מילים</span><span class="zoom-controls" aria-label="שינוי גודל תצוגה"><button id="zoomOut" type="button" title="הקטנת תצוגה" aria-label="הקטנת תצוגה">−</button><span id="zoomValue" class="zoom-value">100%</span><button id="zoomIn" type="button" title="הגדלת תצוגה" aria-label="הגדלת תצוגה">+</button><button id="zoomReset" type="button" title="איפוס גודל" aria-label="איפוס גודל"><svg class="icon" viewBox="0 0 24 24"><path d="M3 11a9 9 0 1 1 2.6 6.4M3 4v7h7"/></svg></button></span></span></div><details class="toc" id="toc" hidden><summary>תוכן עניינים</summary><nav id="tocList"></nav></details><article id="preview" dir="rtl"></article><div class="status">העיבוד מתבצע בדפדפן; אין שליחת קבצים לשום מקום.</div></section>
+</div><div class="editor-toolbar mm-only" id="mmBar" role="toolbar" aria-label="כלי מתמחים טופ"><button type="button" data-mm="spoiler" title="ספוילר (:::)">ספוילר</button><label class="mm-color" title="צבע טקסט">צבע <input type="color" id="mmColor" value="#e03131"></label><button type="button" data-mm="right">ימין</button><button type="button" data-mm="center">מרכז</button><button type="button" data-mm="left">שמאל</button><button type="button" data-mm="head" title="כותרת עם רקע כהה">כותרת</button><button type="button" data-mm="tip" title="הסבר בריחוף">הסבר בריחוף</button><button type="button" data-mm="guest" title="מוסתר מאורחים">מוסתר מאורחים</button><button type="button" data-mm="u" title="Ctrl+U">קו תחתון</button><select id="mmAlert" aria-label="התראה"><option value="">התראה…</option><option>info</option><option>important</option><option>warning</option></select><button type="button" data-mm="hr">קו מפריד</button><button type="button" data-mm="nbsp" title="&amp;nbsp;">רווח</button></div><div id="findBar" hidden><input id="fq" placeholder="חיפוש" aria-label="חיפוש"><input id="fr" placeholder="החלפה" aria-label="החלפה"><button id="fprev" type="button">הקודם</button><button id="fnext" type="button">הבא</button><button id="frep" type="button">החלף</button><button id="frepAll" type="button">החלף הכול</button><span id="fcount"></span><button id="fclose" type="button" aria-label="סגירה">✕</button></div><textarea id="source" spellcheck="false" aria-label="תוכן Markdown" placeholder="# הכותרת שלך&#10;&#10;כתוב כאן..."></textarea><div class="status" id="editStatus">הטקסט נשמר בזיכרון הדף בלבד.</div></section>
+<section class="pane"><div class="pane-title"><span>תצוגה מעוצבת</span><span style="display:flex;align-items:center;gap:10px"><span id="wordCount">0 מילים</span><span class="zoom-controls" aria-label="שינוי גודל תצוגה"><button id="zoomOut" type="button" title="הקטנת תצוגה" aria-label="הקטנת תצוגה">−</button><span id="zoomValue" class="zoom-value">100%</span><button id="zoomIn" type="button" title="הגדלת תצוגה" aria-label="הגדלת תצוגה">+</button><button id="zoomReset" type="button" title="איפוס גודל" aria-label="איפוס גודל"><svg class="icon" viewBox="0 0 24 24"><path d="M3 11a9 9 0 1 1 2.6 6.4M3 4v7h7"/></svg></button></span></span></div><div class="gh-filebar" id="toc"><span class="gh-tab" id="ghTab">README</span><span class="gh-spacer"></span><button type="button" class="gh-ib" id="ghEdit" aria-label="עריכה" title="עריכה"><svg class="icon" viewBox="0 0 24 24"><path d="m4 16.5-.8 4.3 4.3-.8L20 7.5 16.5 4z"/></svg></button><button type="button" class="gh-ib" id="ghOutline" aria-label="תוכן עניינים" title="תוכן עניינים" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></button><div class="gh-pop" id="ghOutlinePop" hidden><div class="gh-pop-title">תוכן עניינים</div><nav id="tocList"></nav></div></div><div class="mm-post-head mm-only"><span class="mm-avatar">מ</span><div><b>משתמש</b><div class="mm-time">לפני רגע</div></div><span class="mm-num">#1</span></div><article id="preview" dir="rtl"></article><div class="mm-post-foot mm-only"><span>↩ תגובה</span><span>❝ ציטוט</span><span class="mm-votes">▲ 0 ▼</span></div><div class="status">העיבוד מתבצע בדפדפן; אין שליחת קבצים לשום מקום.</div></section>
 </main>
 <script>
 /*
@@ -150,6 +196,14 @@ function inline(s){
   s=escapeHTML(s);
   // Inline code first, protecting its contents.
   s=s.replace(/`([^`\n]+)`/g,(_,c)=>hold('<code>'+c+'</code>'));
+  if(skin==='mm'){
+   s=s.replace(/%\((#[0-9a-fA-F]{3,8})\)\[([^\]]+)\]/g,'<span style="color:$1">$2</span>');
+   s=s.replace(/\*\*\*(.+?)\*\*\*/g,'<u>$1</u>');
+   s=s.replace(/(^|\s)II(?=\S)(.+?)(?<=\S)II(?=$|\s|[.,!?:;])/g,'$1<span class="guest-hide" title="מוסתר מאורחים">$2</span>');
+   s=s.replace(/°fa-[\w-]+°\(([^)]*)\)/g,'<span class="mm-tip" title="$1" tabindex="0">ⓘ</span>');
+   s=s.replace(/&amp;(nbsp|hairsp|#160|#8202);/g,'&$1;');
+   s=s.replace(/(^|[\s(])@([\w\u0590-\u05ff-]+)/g,'$1<span class="mention">@$2</span>');
+  }
   // Markdown images and links.
   s=s.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g,(_,alt,url,title)=>{
     const u=safeUrl(url,true); return hold(`<img src="${escapeHTML(u)}" alt="${alt}"${title?` title="${title}"`:''} loading="lazy">`);
@@ -158,6 +212,7 @@ function inline(s){
     const u=safeUrl(url); return hold(`<a href="${escapeHTML(u)}" ${/^https?:/i.test(u)?'target="_blank" rel="noopener noreferrer"':''}${title?` title="${title}"`:''}>${label}</a>`);
   });
   s=s.replace(/&lt;(https?:\/\/[^&\s]+)&gt;/g,'<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+  s=s.replace(/\*\*\*(.+?)\*\*\*/g,'<strong><em>$1</em></strong>');
   s=s.replace(/\*\*(.+?)\*\*|__(.+?)__/g,'<strong>$1$2</strong>');
   s=s.replace(/~~(.+?)~~/g,'<del>$1</del>');
   s=s.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g,'$1<em>$2</em>');
@@ -177,6 +232,13 @@ function render(md){
   if(blank(l)){i++;continue}
   let fm=fence(l);
   if(fm){const marker=fm[1][0];i++;let code=[];while(i<lines.length&&!lines[i].trim().startsWith(marker.repeat(3))){code.push(lines[i++])}if(i<lines.length)i++;html+=`<pre><code>${hl(code.join('\n'),fm[2])}</code></pre>`;continue}
+  if(skin==='mm'){
+   const ma=l.match(/^!!!\s*(info|important|warning|success|danger)\s*(?:\[([^\]]*)\])?\s*:?\s*(.*)$/i);
+   if(ma){const t=ma[1].toLowerCase(),b=[ma[3]];i++;while(i<lines.length&&!blank(lines[i])&&!/^!!!/.test(lines[i]))b.push(lines[i++]);html+=`<div class="mm-alert mm-${t}">${ma[2]?`<strong>${escapeHTML(ma[2])}</strong>`:''}<div>${inline(b.join('\n').trim())}</div></div>`;continue}
+   if(/^\s*:::\s*$/.test(l)){i++;const inner=[];while(i<lines.length&&!/^\s*:::\s*$/.test(lines[i]))inner.push(lines[i++]);if(i<lines.length)i++;html+=`<details class="mm-spoiler"><summary>ספוילר</summary>${render(inner.join('\n'))}</details>`;continue}
+   const al=l.match(/^\s*(->|<-)\s*(.+?)\s*(->|<-)\s*$/);
+   if(al){const d=al[1]==='->'?(al[3]==='<-'?'center':'right'):'left';html+=`<p style="text-align:${d}">${inline(al[2])}</p>`;i++;continue}
+  }
   let hm=l.match(/^\s{0,3}(#{1,6})\s+(.*?)\s*#*\s*$/);
   if(hm){let level=hm[1].length;html+=`<h${level}>${inline(hm[2])}</h${level}>`;i++;continue}
   if(/^\s{0,3}(?:[-*_]\s*){3,}$/.test(l)){html+='<hr>';i++;continue}
@@ -365,9 +427,12 @@ function hl(code,lang){lang=(lang||'').toLowerCase().replace(/^\{?\.?|\}$/g,'');
  while((m=re.exec(code))){out+=escapeHTML(code.slice(last,m.index));const c=m[1]!=null?'c':m[2]!=null?'s':m[3]!=null?'n':m[4]!=null?'k':m[5]!=null?'t':'f';out+=`<span class="hl-${c}">${escapeHTML(m[0])}</span>`;last=re.lastIndex}
  return out+escapeHTML(code.slice(last))}
 // ===== Table of contents =====
-function buildToc(){const hs=[...preview.querySelectorAll('h1,h2,h3,h4')],seen={},list=$('tocList');list.innerHTML='';$('toc').hidden=hs.length<2;
- hs.forEach(h=>{let id=h.textContent.trim().toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu,'').replace(/\s+/g,'-')||'h';seen[id]=(seen[id]||0)+1;if(seen[id]>1)id+='-'+(seen[id]-1);h.id=id;
-  const a=document.createElement('a');a.textContent=h.textContent;a.href='#'+id;a.style.paddingInlineStart=(h.tagName[1]-1)*14+'px';a.onclick=e=>{e.preventDefault();h.scrollIntoView({behavior:'smooth',block:'start'})};list.appendChild(a)})}
+function buildToc(){const all=[...preview.querySelectorAll('h1,h2,h3,h4,h5,h6')],seen={},list=$('tocList');list.innerHTML='';
+ $('ghTab').textContent=filename.replace(/\.(md|markdown|txt)$/i,'')||'README';$('ghOutline').hidden=!all.some(h=>+h.tagName[1]<=4);
+ all.forEach(h=>{const t=h.textContent;let id=t.trim().toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu,'').replace(/\s+/g,'-')||'h';seen[id]=(seen[id]||0)+1;if(seen[id]>1)id+='-'+(seen[id]-1);h.id=id;
+  h.insertAdjacentHTML('afterbegin','<a class="anchor" href="#'+id+'" aria-label="קישור לכותרת"><svg class="icon" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></a>');
+  if(+h.tagName[1]<=4){const a=document.createElement('a');a.textContent=t;a.href='#'+id;a.style.paddingInlineStart=(h.tagName[1]-1)*14+'px';a.onclick=e=>{e.preventDefault();closeOutline();h.scrollIntoView({behavior:'smooth',block:'start'})};list.appendChild(a)}})}
+function closeOutline(){$('ghOutlinePop').hidden=true;$('ghOutline').setAttribute('aria-expanded','false')}
 const _upd=update;update=function(){_upd();buildToc()};
 // ===== Synced scrolling (desktop) =====
 let owner=null,ownerT;[[source,preview],[preview,source]].forEach(([a,b])=>a.addEventListener('scroll',()=>{if(owner&&owner!==a)return;owner=a;clearTimeout(ownerT);ownerT=setTimeout(()=>owner=null,80);
@@ -399,6 +464,25 @@ async function idbSet(h){try{(await idb()).transaction('h','readwrite').objectSt
 async function idbGet(){try{const d=await idb();return await new Promise(res=>{const q=d.transaction('h').objectStore('h').get('last');q.onsuccess=()=>res(q.result);q.onerror=()=>res(null)})}catch(e){return null}}
 const _load=loadText;loadText=function(n,t,h){_load(n,t,h);if(h)idbSet(h)};
 if(FS)idbGet().then(h=>{if(!h)return;const b=$('reopen');b.hidden=false;b.textContent='פתיחה מחדש: '+h.name;b.onclick=async()=>{try{const ok=(await h.requestPermission({mode:'readwrite'}))==='granted',f=await h.getFile();loadText(f.name,await f.text(),ok?h:null);b.hidden=true}catch(e){status('הקובץ לא נמצא או שאין הרשאה')}}});
+
+
+// ===== Skin switch (GitHub / Mitmachim Top) =====
+let skin='gh';
+function setSkin(s,keep){skin=s;document.documentElement.dataset.skin=s;document.querySelectorAll('.skin-switch button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.skin===s));try{localStorage.setItem('mdreader.skin',s)}catch(e){}if(!keep){loading=true;update();loading=false}}
+document.querySelectorAll('.skin-switch button').forEach(b=>b.onclick=()=>setSkin(b.dataset.skin));
+const MM={spoiler:()=>editSelection('\n\n:::\n','\n:::\n\n','טקסט מוסתר'),right:()=>editSelection('\n\n-> ',' ->\n\n'),center:()=>editSelection('\n\n-> ',' <-\n\n'),left:()=>editSelection('\n\n<- ',' <-\n\n'),
+ head:()=>editSelection('\n\n## ','\n\n','כותרת'),tip:()=>editSelection('°fa-info°(',')','טקסט הסבר'),guest:()=>editSelection('II','II'),u:()=>editSelection('***','***'),hr:()=>editSelection('\n\n___\n\n','',''),nbsp:()=>editSelection('&nbsp;','','')};
+document.querySelectorAll('#mmBar [data-mm]').forEach(b=>b.onclick=MM[b.dataset.mm]);
+$('mmColor').addEventListener('input',e=>editSelection('%('+e.target.value+')[',']'));
+$('mmAlert').onchange=e=>{if(e.target.value)editSelection('\n\n!!! '+e.target.value+' [MitmachimTop]: ','\n\n','טקסט ההתראה');e.target.value=''};
+source.addEventListener('keydown',e=>{if(skin==='mm'&&(e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='u'){e.preventDefault();MM.u()}});
+try{setSkin(localStorage.getItem('mdreader.skin')==='mm'?'mm':'gh',true)}catch(e){}
+
+// ===== GitHub-style outline dropdown =====
+$('ghOutline').onclick=e=>{e.stopPropagation();const p=$('ghOutlinePop'),open=p.hidden;p.hidden=!open;$('ghOutline').setAttribute('aria-expanded',String(open))};
+document.addEventListener('click',e=>{if(!e.target.closest('#ghOutlinePop,#ghOutline'))closeOutline()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeOutline()});
+$('ghEdit').onclick=()=>{if(matchMedia('(max-width:800px)').matches)mobileTab('editor');source.focus()};
 
 restoreDraft();
 </script>
